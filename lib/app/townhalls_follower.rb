@@ -55,7 +55,7 @@ class Handle
    @row_handle = [] #recupere mes lignes avec mes Handle
 
    def get_rows_from_csv
-       CSV.foreach("file.csv") do |row|
+       CSV.foreach("townhalls.csv") do |row|
            p row
        end
    end

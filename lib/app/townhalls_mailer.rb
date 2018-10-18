@@ -2,7 +2,6 @@ require 'google/apis/gmail_v1'
 require 'googleauth'
 require 'googleauth/stores/file_token_store'
 require 'fileutils'
-require 'gmail' 
 require 'dotenv'
 require 'csv'
 require 'bundler'
@@ -31,6 +30,6 @@ def send_one_mail(address_mail, nom_mairie, number_commune)
 	end
 end
 
-CSV.foreach("test.csv") do |row|
+CSV.foreach("db/townhalls.csv") do |row|
 	send_one_mail(row[0], row[1], row[2])
 end
