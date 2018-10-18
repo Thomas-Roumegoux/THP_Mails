@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
+require 'json'
 require 'bundler'
 Bundler.require
 
@@ -90,6 +91,11 @@ puts scrap.email
 
 puts scrap.link
 
+@mix = Hash[scrap.villes.zip(scrap.email)]
+
+File.open(‘db/hannan.json’, ‘w’) do |f|
+    f.write(@mix.to_json )
+end
 
 
 
