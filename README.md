@@ -15,6 +15,7 @@
 * Gem mail: pour l'envoi automatique des emails
 * API Twitter: pour l'envoi des favori et ping sur les compte twitter des mairie
 * API Google Drive: pour l'acces en ecriture/lecture d'un fichier spreadsheet
+* Dotenv: Pour charger les clés des API
 
 ## Prerequis
 
