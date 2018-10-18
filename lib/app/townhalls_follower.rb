@@ -16,54 +16,53 @@ class Bottwitter
        end
        return @client
    end
-   def research # cherche les IDs des mairies des villes
+   def research #Cherche les screen_name des auteurs de tweets obtenus par recherche sur "Mairie VILLE" Puis pour de chaque villes, en deduit le handle
        tweeter_Ids = []
        client_connect
+       handles = []
        i = 0
-       tab_mairie = ["Mairie Vincennes","Mairie Créteil","Mairie Suresnes"]
-       tab_mairie.each do |mairie|
-           @client.user_search(mairie).take(6).each do |tweet| #en dur pour le moment , sinon un tableau
-               #tweeter_Ids[i] = "#{tweet.id}"
+       get_cities.each do |mairie|
+           @client.user_search(mairie).take(1).each do |tweet| # retient le 1er resultat de la recherche,
 
-               puts "#{tweet.id} ; #{tweet.screen_name}; #{tweet.lang}; #{tweet.location}; #{tweet.created_at}; #{tweet.followers_count} "
-               #puts "#{tweet.user.id}; #{tweet.user.screen_name}; #{tweet.user.email}; #{tweet.user.followers_count}; #{tweet.user.name}"
-               #puts tweet.user.methods
+               handles[i] = "@#{tweet.screen_name}"  #retourne le Handle
+               puts handles[i]
+               tweeter_Ids[i] = tweet.id
                i+= 1
            end
            puts
+           #@client.follow(tweeter_Ids[i])
        end
-       #test
-
 
 
    end
 
-   #cherche Handle mairies des villes
-   def send_Handle
+   #cherche les noms des villes
+   def get_cities
+       start = City.new
 
+       return start.get_name
    end
 end
 
 #Cette classe est en charge de creer un Handle pour chaque mairie
 #Le programme travail un meme fichier CSV, en entree et sortie
 # utilise la classe Bottwitter
-class Handle
+class City
    require "csv"
-   tweet_research = ["Mairie Vincennes"]
 
-   @rows = []  #me servira memoire tampon pour les lignes
-   @row_handle = [] #recupere mes lignes avec mes Handle
-
-   def get_rows_from_csv
-       CSV.foreach("townhalls.csv") do |row|
-           p row
+   #Renvoie un Array de nom_de_ville
+   def get_name
+       i = 0
+       cities = []
+       rows = []
+       CSV.foreach("db/townhalls.csv") do |row|
+           cities[i] = row[0].gsub(/[\t]/,'')
+           i += 1
        end
-   end
 
-   def tweet
-       puts Bottwitter.new.research
+       return cities
+
    end
 
 end
-start = Handle.new
-start.tweet
+Bottwitter.new.research
