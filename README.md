@@ -1,5 +1,5 @@
 # THP_Mails
-Ce projet consiste à envoyer en masse et de facon automatisée des emails à destination des villes de 3 départements    prédéfinis.
+Ce projet consiste à envoyer en masse et de facon automatisée des emails à destination des villes de 3 départements    prédéfinis. ( VAL DE MARNE / TERRITOIRE DE BELFORT / LAUZERE )
 
 ## Participants / Roles
 
