@@ -8,6 +8,7 @@ GEM
     declarative-option (0.1.0)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.5.0)
     equalizer (0.0.11)
     faraday (0.15.3)
       multipart-post (>= 1.2, < 3)
@@ -87,6 +88,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  dotenv
   google-api-client (~> 0.8)
   google_drive
   twitter
