@@ -41,6 +41,7 @@ GEM
     http-form_data (2.1.1)
     http_parser.rb (0.6.0)
     httpclient (2.8.3)
+    json (2.1.0)
     jwt (2.1.0)
     memoist (0.16.0)
     memoizable (0.4.2)
@@ -91,10 +92,11 @@ DEPENDENCIES
   dotenv
   google-api-client (~> 0.8)
   google_drive
+  json
   twitter
 
 RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.5
+   1.16.6
